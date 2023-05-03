@@ -1,5 +1,5 @@
 <?php
-include './koneksi.php';
+include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ include './koneksi.php';
                         <th scope="col">keterangan</th>
                         <th scope="col">harga</th>
                         <th scope="col">jumlah</th>
-                        <th scope="col"><a href="edit.php?id=<?= $data['id']?>" class="btn btn-warning">Edit</a></th>
+                        <th scope="col">aksi</th>
                     </tr>
                 </thead>
                 <?php
@@ -43,7 +43,13 @@ include './koneksi.php';
                         <td><?= $data['keterangan']?></td>
                         <td><?= $data['harga']?></td>
                         <td><?= $data['jumlah']?></td>
-                        <td></td>
+                        <th scope="col">
+                            <a href="edit.php?id=<?= $data['id']?>" class="btn btn-warning">Edit</a>
+                            <form class="d-inline" action="hapus.php" method="post">
+                                <input type="hidden" name="id" value="<?= $data['id']?>">
+                                <button class="btn btn-danger">Hapus</button>
+                            </form>
+                        </th>
                     </tr>
                 </tbody>
                 <?php
